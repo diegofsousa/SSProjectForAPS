@@ -1,0 +1,170 @@
+-- MySQL dump 10.13  Distrib 5.5.54, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: serralheria_sousa
+-- ------------------------------------------------------
+-- Server version	5.5.54-0ubuntu0.14.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `cliente`
+--
+
+DROP TABLE IF EXISTS `cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cliente` (
+  `idcliente` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `telefone` varchar(45) NOT NULL,
+  `cpf` varchar(45) NOT NULL,
+  `sexo` varchar(1) NOT NULL,
+  `atividade` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idcliente`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cliente`
+--
+
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (1,'Venda informal','0000000','18','M',1),(12,'MARIA DE SOUSA','89994553323','39393948848','F',1),(13,'ZLATAN IBRAHIMOVIC','78364662626','39348492929','M',1),(14,'RUBENS DE SOUSA LIMA','89374838282','83921304902','M',1),(15,'ANTONIO CARVALHO','89994563722','83292378498','M',1),(16,'IRANI VEIRA','8934622994','84889202833','F',1),(17,'DIEGO VASCONCELOS','34765823657','98743987498','M',1),(18,'FELIPE FONTINELE','85738567666','88888888888','M',1),(19,'EDWARD','94685798769','86584695784','F',0),(20,'TERESA VIEIRA','89994416742','74992839283','F',1);
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `nota`
+--
+
+DROP TABLE IF EXISTS `nota`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `nota` (
+  `idnota` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(45) NOT NULL,
+  `texto` varchar(500) NOT NULL,
+  `data` varchar(45) NOT NULL,
+  PRIMARY KEY (`idnota`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `nota`
+--
+
+LOCK TABLES `nota` WRITE;
+/*!40000 ALTER TABLE `nota` DISABLE KEYS */;
+INSERT INTO `nota` VALUES (1,'teste nota','texto nota dentro do texto','555'),(2,'nota','foi','20 de Julho de 2016 - 14:19h'),(3,'mais uma nota','aqui fica notas','20 de Julho de 2016 - 14:30h'),(4,'Sistema de banco de dados','System!','20 de Julho de 2016 - 14:31h'),(5,'new','ksandsmla,','20 de Julho de 2016 - 15:51h'),(7,'Criação de QRCode','Em construção!','23 de Agosto de 2016 - 10:26h'),(8,'QRCode criado','Sucesso!','23 de Agosto de 2016 - 11:00h'),(9,'QRCode implementado','Implementação feita na tela de Login efetuado com sucesso!','23 de Agosto de 2016 - 11:01h'),(10,'jfsdbjifd','kjfvdmnc','28 de Setembro de 2016 - 16:23h'),(11,'Adicionar ao software','1 - Criar tabela para funcionario\n1.1 - O adm pode criar funcionarios\n1.2 - O adm pode repor estoque\n\n2 - Gerar relatorios de vendas','11 de Janeiro de 2017 - 22:48h');
+/*!40000 ALTER TABLE `nota` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `produto`
+--
+
+DROP TABLE IF EXISTS `produto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `produto` (
+  `idproduto` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `valor` double NOT NULL,
+  `qtd_estoque` int(11) NOT NULL,
+  PRIMARY KEY (`idproduto`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `produto`
+--
+
+LOCK TABLES `produto` WRITE;
+/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
+INSERT INTO `produto` VALUES (8,'PORTA CORRER SIMPLES',300,0),(9,'PORTAO DE ROLO',700,13),(10,'PORTAO CHAPA ONDULADA',1200,5),(11,'CANTONEIRA',20,27),(12,'CHAPA CINCO METROS',89,18),(13,'PORTA CORRER',300,3),(14,'JANELA COM VITRO',400,16),(15,'VITRO SIMPLES',119,13);
+/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `idusuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `login` varchar(45) NOT NULL,
+  `senha` varchar(45) NOT NULL,
+  `administrador` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`idusuario`),
+  UNIQUE KEY `login_UNIQUE` (`login`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'DIEGO FERNANDO','dieguim5672','961100',1),(2,'MARIA','maria','123',0);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `venda`
+--
+
+DROP TABLE IF EXISTS `venda`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `venda` (
+  `idvenda` int(11) NOT NULL AUTO_INCREMENT,
+  `qtd_venda` int(11) NOT NULL,
+  `valor` double NOT NULL,
+  `cliente_idcliente` int(11) NOT NULL,
+  `produto_idproduto` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
+  `data` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idvenda`),
+  KEY `fk_venda_cliente_idx` (`cliente_idcliente`),
+  KEY `fk_venda_produto1_idx` (`produto_idproduto`),
+  KEY `fk_venda_usuario1_idx` (`usuario_idusuario`),
+  CONSTRAINT `fk_venda_cliente` FOREIGN KEY (`cliente_idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_venda_produto1` FOREIGN KEY (`produto_idproduto`) REFERENCES `produto` (`idproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_venda_usuario1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `venda`
+--
+
+LOCK TABLES `venda` WRITE;
+/*!40000 ALTER TABLE `venda` DISABLE KEYS */;
+INSERT INTO `venda` VALUES (50,1,700,16,9,1,'21 de Julho de 2016 - 04:34h'),(51,2,40,1,11,1,'21 de Julho de 2016 - 04:35h'),(52,1,89,14,12,1,'21 de Julho de 2016 - 04:36h'),(53,1,700,16,9,1,'21 de Julho de 2016 - 06:06h'),(54,1,300,12,8,1,'21 de Julho de 2016 - 06:09h'),(55,2,240,17,15,1,'21 de Julho de 2016 - 12:48h'),(56,3,900,18,8,1,'21 de Julho de 2016 - 16:10h'),(57,1,700,15,9,1,'02 de Agosto de 2016 - 05:31h'),(58,1,120,19,15,1,'02 de Agosto de 2016 - 23:06h'),(59,1,700,16,9,1,'22 de Agosto de 2016 - 06:38h'),(60,4,1600,17,14,1,'28 de Agosto de 2016 - 10:12h'),(61,2,1400,20,9,1,'28 de Agosto de 2016 - 10:16h'),(62,4,476,16,15,1,'28 de Agosto de 2016 - 10:21h'),(63,2,1400,20,9,1,'08 de Janeiro de 2017 - 17:59h'),(64,1,300,15,8,1,'03 de Fevereiro de 2017 - 05:22h'),(65,1,20,1,11,1,'03 de Fevereiro de 2017 - 05:23h'),(66,1,89,14,12,2,'03 de Fevereiro de 2017 - 05:23h'),(67,1,300,1,13,1,'23 de Fevereiro de 2017 - 10:59h'),(68,1,700,16,9,1,'23 de Fevereiro de 2017 - 10:59h'),(69,2,600,14,13,2,'23 de Fevereiro de 2017 - 11:03h');
+/*!40000 ALTER TABLE `venda` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-02-24  7:49:27
